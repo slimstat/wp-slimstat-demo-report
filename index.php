@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WP SlimStat - My Custom Report
+Plugin Name: SlimStat Analytics - My Custom Report
 Description: My super duper custom report
 Version: 1.0
 */
@@ -39,7 +39,7 @@ class wp_slimstat_super_duper_report {
 
          // Report layout: normal, wide, full-width, tall
          // You can mix and match class names (normal tall) 
-         'classes' => array( 'full-width' ),
+         'classes' => array( 'normal' ),
 
          // On what screen should this report appear by default?
          // slimview1: Real-time
@@ -48,7 +48,7 @@ class wp_slimstat_super_duper_report {
          // slimview4: Site Analysis
          // slimview5: Traffic Sources
          // dashboard: WordPress Dashboard
-         'screens' => array( 'slimview3' )
+         'locations' => array( 'slimview3' )
       );
 
       return $_reports_info;
@@ -119,14 +119,14 @@ class wp_slimstat_super_duper_report {
       }
 
       // Exit if this function was called through Ajax (refresh button)
-      if ( defined( 'DOING_AJAX' ) &amp;amp;&amp;amp; DOING_AJAX ) {
+      if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
          die();
       }
    }
 }
 // end of class declaration
 
-// Bootstrap
+// Let's get this party started!
 if ( function_exists( 'add_action' ) ) {
    add_action( 'plugins_loaded', array( 'wp_slimstat_super_duper_report', 'init' ), 10 );
 }
